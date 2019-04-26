@@ -88,22 +88,20 @@ async function movie() {
     if (!search) {
         search = "RED";
     }
-    const response = await axios.get("http://www.omdbapi.com/?t=" + search + "&apikey=3bcc87a3")
+    const response = await axios.get("http://www.omdbapi.com/?t=" + search + "&apikey=f6af65be")
     const result = response.data;
+    // console.log(result)
     const movieData = [
         `Title: ${result.Title}`,
         `Year: ${result.Year}`,
-        `IMDB Rating: ${result.Ratings[0].Value}`,
-        `Rotten Tomatoes: ${result.Ratings[1].Value}`,
+        `IMDB Rating: ${result.imdbRating}`,
         `Country: ${result.Country}`,
         `Language: ${result.Language}`,
         `Actors: ${result.Actors}`,
         `Plot: ${result.Plot}`,
     ];
     const displayString = movieData.join("\n") + divider;
-    fs.appendFile("log.txt", displayString, (err) => {
-            console.log(displayString);
-    });
+    console.log(displayString)
 }
 
 // FUNCTION: do-something
